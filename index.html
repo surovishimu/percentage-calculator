@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.5.1/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="max-w-screen-sm bg-slate-500 h-80 mx-auto mt-40 ">
+        <h1 class="text-3xl font-semibold text-white text-center pt-5">
+            Discount Calculator
+        </h1>
+        <p class="text-lg font-semibold ml-5 mt-5">Actual Price: <input class="outline-none ml-4" id="actual-price"
+                type="text"></p>
+        <p class="text-lg font-semibold ml-5 mt-5">Percentage: <input class="outline-none ml-6" id="percentage"
+                type="text"></p>
+        <Button class="bg-slate-50 ml-36 mt-5 h-9 w-20  font-semibold hover:bg-blue-900 hover:text-white "
+            id="button">Apply</Button>
+        <p class="text-lg font-semibold ml-5 mt-5">Discount Price: <input class="outline-none" id="discount-price"
+                type="text"></p>
+
+    </div>
+
+    <script>
+        document.getElementById('button').addEventListener('click', function () {
+            const actualPriceField = document.getElementById('actual-price');
+            const actualPriceString = actualPriceField.value;
+            const actualPriceFloat = parseFloat(actualPriceString);
+
+
+            const percentageField = document.getElementById('percentage');
+            const percentageString = percentageField.value;
+            const percentageFloat = parseFloat(percentageString);
+
+            let discountPrice = (percentageFloat / 100) * actualPriceFloat;
+            let finalPrice = actualPriceFloat - discountPrice;
+
+            const discountPriceiefield = document.getElementById('discount-price');
+            discountPriceiefield.value = finalPrice;
+
+        })
+    </script>
+</body>
+
+</html>
