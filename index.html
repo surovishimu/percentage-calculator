@@ -30,11 +30,14 @@
             const actualPriceField = document.getElementById('actual-price');
             const actualPriceString = actualPriceField.value;
             const actualPriceFloat = parseFloat(actualPriceString);
+            actualPriceField.value = '';
 
 
             const percentageField = document.getElementById('percentage');
             const percentageString = percentageField.value;
             const percentageFloat = parseFloat(percentageString);
+            percentageField.value = '';
+
 
             let discountPrice = (percentageFloat / 100) * actualPriceFloat;
             let finalPrice = actualPriceFloat - discountPrice;
