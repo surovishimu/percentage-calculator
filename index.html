@@ -16,8 +16,11 @@
         </h1>
         <p class="text-lg font-semibold ml-5 mt-5">Actual Price: <input class="outline-none ml-4" id="actual-price"
                 type="text"></p>
-        <p class="text-lg font-semibold ml-5 mt-5">Percentage: <input class="outline-none ml-6" id="percentage"
+        <!-- <p class="text-lg font-semibold ml-5 mt-5">Percentage: <input class="outline-none ml-6" id="percentage"
+                type="text"></p> -->
+        <p class="text-lg font-semibold ml-5 mt-5">Coupon: <input class="outline-none ml-12" id="percentage"
                 type="text"></p>
+
         <Button class="bg-slate-50 ml-36 mt-5 h-9 w-20  font-semibold hover:bg-blue-900 hover:text-white "
             id="button">Apply</Button>
         <p class="text-lg font-semibold ml-5 mt-5">Discount Price: <input class="outline-none" id="discount-price"
@@ -35,15 +38,29 @@
 
             const percentageField = document.getElementById('percentage');
             const percentageString = percentageField.value;
-            const percentageFloat = parseFloat(percentageString);
-            percentageField.value = '';
+            if (percentageString === "DISC30") {
+                let discountPrice = (30 / 100) * actualPriceFloat;
+                let finalPrice = actualPriceFloat - discountPrice;
+
+                const discountPriceiefield = document.getElementById('discount-price');
+                discountPriceiefield.value = finalPrice;
+                percentageField.value = '';
+            }
+            else if (percentageString != "DISC30" && percentageString != '') {
+                const discountPriceiefield = document.getElementById('discount-price');
+                discountPriceiefield.value = actualPriceFloat;
+                alert('invalid code');
+                percentageField.value = '';
+
+            }
+            else {
+                alert('Plese enter the coupon code')
+
+            }
 
 
-            let discountPrice = (percentageFloat / 100) * actualPriceFloat;
-            let finalPrice = actualPriceFloat - discountPrice;
 
-            const discountPriceiefield = document.getElementById('discount-price');
-            discountPriceiefield.value = finalPrice;
+
 
         })
     </script>
